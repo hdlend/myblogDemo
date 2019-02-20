@@ -1,0 +1,165 @@
+body {
+	    font: 15px "Microsoft YaHei", Arial, Helvetica, sans-serif;
+	    color: #555;
+	    background: #f1f1f1;
+	    line-height: 1.5;
+	}
+	ul ,li{
+  	   list-style:none; /* 去掉ul前面的符号 */
+   	   margin: 0px; /* 与外界元素的距离为0 */
+  	   padding: 0px; /* 与内部元素的距离为0 */
+  	   width: auto; /* 宽度根据元素内容调整 */
+	}
+	a:link,a:visited{
+	 text-decoration:none;  /*超链接无下划线*/
+	}
+	.div_header{
+	    background: #333;
+	    line-height: 46px;
+	    width:100%;
+	}
+	.div_mav{
+		width:85%;
+		margin: auto;
+	}
+	.div_logo{
+		font-size:22px;
+	}
+	
+	.div_logo,.div_menu{
+		display:inline;
+	}
+	.div_logo a{
+		color: #FFF;
+	}
+	.div_mav ul ,li{
+  	   list-style:none; /* 去掉ul前面的符号 */
+   	   margin: 0px; /* 与外界元素的距离为0 */
+  	   padding: 0px; /* 与内部元素的距离为0 */
+  	   width: auto; /* 宽度根据元素内容调整 */
+	}
+	.div_mav ul{
+  	   float:right;
+	}
+	.div_mav ul li{
+		float:left;
+		color:#fff;
+		padding-right:20px;
+	}
+	.div_mav ul li a{
+		color:#fff;
+	}
+	.blank {
+	    height: 20px;
+	    overflow: hidden;
+	    width: 100%;
+	    margin: auto;
+	    clear: both;
+    }
+	.div_main{
+		width:85%;
+		margin:auto;
+		background:#FFF;
+		overflow: hidden;
+	}
+	.div_info{
+		padding:20px;
+	}
+	.div_serach{
+		border-bottom: #000 2px solid;
+		padding-bottom: 10px;
+		overflow: hidden;
+	}
+	.div_serach #keyboard{
+		float:right;
+		border: 1px solid #ccc;
+	    height: 26px;
+	    line-height: 28px;
+	    background-color: #f2f2f2;
+	    border-radius: 0 5px 5px 0;
+	    outline: none;
+	} 
+    .input_submit {
+	    background-color: #333;
+	    color: #FFF;
+	    float: right;
+	    width: 55px;
+	    border: none;
+	    cursor: pointer;
+	    height: 30px;
+	    line-height: 30px;
+	    border-radius: 5px 0 0 5px;
+	    outline: none;
+	}
+	
+	
+	.bloglist {
+		width:100%;
+	    border: #ddd 1px solid;
+	    float: left;
+	    overflow: hidden;
+	    background: #fff;
+	    margin-bottom: 15px;
+    }
+   .bloglist table ul li{
+   		float:left;
+   		padding-right:20px;
+   }
+   .bloglist table td{
+	   	overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+   }
+	.blogpic {
+	    float: left;
+	    width: 28%;
+	    height: 150px;
+	    margin-right: 20px;
+	}
+	.bloglist dt {
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    font-size: 20px;
+	    font-weight: normal;
+	}
+	.bloglist dd {
+	    color: #989898;
+	    margin: 15px 0;
+	    display: block;
+	    font-size: 14px;
+	    line-height: 22px;
+	    overflow: hidden;
+	}
+	a {
+	    text-decoration: none;
+	    color: #444;
+	}
+
+	.div_page{
+		 width:85%;
+		 margin:auto;
+		 overflow: hidden;
+	}
+	.div_page ul{
+		 overflow: hidden;
+		    /* float: right; */
+		    margin: 0 auto;
+		    text-align: center;
+		    display: table;
+	}
+	.div_page ul li{
+		float:left;
+		padding-right:25px;
+	}
+	.div_page ul li.li_page:hover{
+	    font-size: 17px;
+   		font-weight: bold;
+	}
+	li.currPage{
+	 	font-size: 17px;
+   		font-weight: bold;
+	}
+	.div_page ul .li_page{
+		cursor: pointer;
+	}

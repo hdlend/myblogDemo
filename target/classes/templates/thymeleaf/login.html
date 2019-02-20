@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>login</title>
+<style type="text/css">
+	
+
+</style>
+</head>
+<body>
+	<form th:action="@{/login}">
+		<input name="uName" class="">
+		<input name="uPass" class="">
+		<input name="captcha" class="">
+		<img style="width:50px;height:20px;"  th:src="@{getKaptchaImage}">
+		
+	</form>
+	
+</body>
+</html>

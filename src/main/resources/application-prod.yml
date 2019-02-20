@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/myblog
+    username: hdlend
+    password: hdlend123
+
+    

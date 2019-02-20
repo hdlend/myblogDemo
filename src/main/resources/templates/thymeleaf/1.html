@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <!--  <link th:href="@{/css/1.css}" rel="stylesheet"/> -->
+</head>
+<style type="text/css">
+	body {
+	    font: 15px "Microsoft YaHei", Arial, Helvetica, sans-serif;
+	    color: #555;
+	    background: #f1f1f1;
+	    line-height: 1.5;
+	}
+	a:link,a:visited{
+	 text-decoration:none;  /*超链接无下划线*/
+	}
+	.div_header{
+	    background: #333;
+	    line-height: 46px;
+	    width:100%;
+	}
+	.div_mav{
+		width:85%;
+		margin: auto;
+	}
+	.div_logo{
+		font-size:22px;
+	}
+	
+	.div_logo,.div_menu{
+		display:inline;
+	}
+	.div_logo a{
+		color: #FFF;
+	}
+	.div_mav ul ,li{
+  	   list-style:none; /* 去掉ul前面的符号 */
+   	   margin: 0px; /* 与外界元素的距离为0 */
+  	   padding: 0px; /* 与内部元素的距离为0 */
+  	   width: auto; /* 宽度根据元素内容调整 */
+	}
+	.div_mav ul{
+  	   float:right;
+	}
+	.div_mav ul li{
+		float:left;
+		color:#fff;
+		padding-right:20px;
+	}
+	.blank {
+	    height: 20px;
+	    overflow: hidden;
+	    width: 100%;
+	    margin: auto;
+	    clear: both;
+    }
+	.div_main{
+		width:85%;
+		margin:auto;
+		background:#FFF;
+		overflow: hidden;
+	}
+	.div_info{
+		padding:20px;
+	}
+	.div_serach{
+		border-bottom: #000 2px solid;
+		padding-bottom: 10px;
+		overflow: hidden;
+	}
+	.div_serach #keyboard{
+		float:right;
+		border: 1px solid #ccc;
+	    height: 26px;
+	    line-height: 28px;
+	    background-color: #f2f2f2;
+	    border-radius: 0 5px 5px 0;
+	    outline: none;
+	} 
+    .input_submit {
+	    background-color: #333;
+	    color: #FFF;
+	    float: right;
+	    width: 55px;
+	    border: none;
+	    cursor: pointer;
+	    height: 30px;
+	    line-height: 30px;
+	    border-radius: 5px 0 0 5px;
+	    outline: none;
+	}
+	.article{
+		overflow: hidden;
+		padding:20px;
+	}
+	.article img{
+		display:block;
+	}
+	.article_title{
+		 font-size: 24px;
+   		 font-weight: normal;
+  		 padding: 20px 0;
+    	 color: #333;
+	}
+	.article_abstract{
+		color: #888888;
+    	border: 1px solid #F3F3F3;
+    	padding: 10px;
+    	margin: 20px auto 15px auto;
+    	line-height: 23px;
+    	background: none repeat 0 0 #F6F6F6;
+	}
+     blockquote {
+	    display: block;
+	    border-left: 8px solid #d0e5f2;
+	    padding: 5px 10px;
+	    margin: 10px 0;
+	    line-height: 1.4;
+	    font-size: 100%;
+	    background-color: #f1f1f1;
+	}
+
+</style>
+<body>
+	<div class="div_header">
+		<div class="div_mav">
+			<div class="div_logo"><a th:href="@{index}">hdlend | 个人博客</a></div>
+			<div class="div_menu">
+				<ul>
+					<li>首页</li>
+					<li>关于我</li>
+					<li>留言</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="blank"></div>
+	<div class="div_main">
+		<div class="div_info">
+			<div class="div_serach">
+				<form>
+					<input type="text" id="keyboard" name="keyboard" value=""/>
+					<input type="submit" class="input_submit" value="搜索" /> 
+				</form>
+			</div>
+			<div class="article">
+				<div class="article_title">第一篇博客</div>
+				<div class="article_date">2018-08-30</div>
+				<div class="article_abstract">记录第一篇博客的诞生</div>
+				<div class="article_detail">
+					这是我自己写的博客网站所发表的第一篇博客
+					<img alt="" th:src="@{/static/images/u=972900498,1756627949&fm=26&gp=0.jpg}">
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</body>
+</html>

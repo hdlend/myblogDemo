@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: dev
+  jpa:
+    properties: 
+      hibernate: 
+      dialect: org.hibernate.dialect.MySQLDialect
+    hibernate: 
+      ddl-auto: update
+    show-sql: true
+  thymeleaf: 
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8  
+    cache: false
+  devtools: 
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+  mvc:
+    static-path-pattern: /static/**
+    

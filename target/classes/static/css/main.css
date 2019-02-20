@@ -1,0 +1,70 @@
+
+header {line-height:46px;background-color:#333;width:100%;color: #FFF;position: fixed;top: 0;}
+.nav {width:1100px;margin:auto;}
+.nav ul{
+	list-style:none; /* 去掉ul前面的符号 */
+    margin: 0px; /* 与外界元素的距离为0 */
+    padding: 0px; /* 与内部元素的距离为0 */
+    width: auto; /* 宽度根据元素内容调整 */
+	float:right;
+}
+.nav ul li{
+	display: block;
+    padding: 0 0 0 40px;
+    font-size: 16px;
+	float:left; /* 向左漂移，将竖排变为横排 */
+}
+.nav ul li a{
+	text-decoration: none;
+	color: #FFF;
+}
+.nav ul li a#selected
+{
+    color: #cfdbe6; /* 文字颜色 */
+}
+.nav #navh{display:none;width:30px;height:40px;float:right;padding-right:10px;}
+.nav #navh span.nav-icon{background-color:#fff;width:30px;height:5px;display:block;margin-top:20px;}
+
+.nav #navh span.nav-icon:before{margin-top: -10px;}
+.nav #navh span.nav-icon:after{margin-top: 10px;}
+.nav #navh span.nav-icon:before,.nav #navh span.nav-icon:after
+{ 
+	content:" ";
+	background-color:#fff;
+	width:30px;
+	height:5px;
+	display:block;
+	position: absolute;
+	
+}
+
+
+
+
+@media screen and (max-width: 959px) and (min-width: 768px)
+ {
+   .nav{ width: 96%;}
+}
+@media screen and (max-width: 1199px) and (min-width: 1024px) {
+	.nav{ width:90%;}
+}
+@media screen and (max-width: 767px) and (min-width: 480px)
+ {
+   .nav{ width: 96%;}
+}
+
+
+@media only screen and (max-width: 479px) 
+ {
+   .nav{ width: 96%;}
+   .nav #navh{display:block;}
+   .nav ul {
+	   width:100%;
+   }
+   .nav ul li{
+	   float:none;
+	   display:block;
+	   width:100%;
+	   text-align: center;
+   }
+}

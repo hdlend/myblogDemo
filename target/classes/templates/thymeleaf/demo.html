@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>wangEditor demo list</title>
+    <style type="text/css">
+        .body {
+            width: 800px;
+            margin: 0 auto 0 auto;
+        }
+         blockquote {
+		    display: block;
+		    border-left: 8px solid #d0e5f2;
+		    padding: 5px 10px;
+		    margin: 10px 0;
+		    line-height: 1.4;
+		    font-size: 100%;
+		    background-color: #f1f1f1;
+	}
+		form input{
+			display:inline;
+		}
+		form textarea{
+			height: 80px;
+    		width: 250px;
+		}
+    </style>
+</head>
+<body>
+    <div class="body">
+		<form id="blogForm" action="/addBlog" method="post">
+		  	<label>标题:</label>	<input type="text" name="bTitle" th:value="${blog.bTitle}" >
+		  	<label>类型:</label>	<input type="text" name="bType" th:value="${blog.bType}" >
+		  	<label>简介:</label>	
+		  	<textarea  name="bAbstract" th:text="${blog.bAbstract}"></textarea>
+		  	<input type="hidden" id="bContent" name="bContent">
+			<input type="hidden" id="bId" name="bId" th:value="${blog.bId}"/>
+        <div id="div1" th:utext="${blog.bContent}">
+            <p>在此处编辑博客内容</p>
+        </div>
+          	<input type="button" value="提交" id="btn_submit">
+		</form>
+        <!-- <button id="btn1">获取html</button>
+         <div id="show_box" style="border: 1px solid gray;margin-left:50px"></div> -->
+
+        </div>
+
+    <!-- 引用js -->
+     <script type="text/javascript" th:src="@{/static/js/jquery-1.12.3.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/wangEditor.js}"></script>
+    <script type="text/javascript">
+    $(function(){
+        var E = window.wangEditor;
+        var editor = new E('#div1');
+     //   editor.customConfig.uploadImgServer = '/upload';  // 上传图片到服务器
+        editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+        editor.create();
+    
+    /*     document.getElementById('btn1').addEventListener('click', function () {
+            // 读取 html
+            alert(editor.txt.html());
+            $("#show_box").html(editor.txt.html());
+        }, false) */
+         document.getElementById('btn_submit').addEventListener('click', function () {
+            // 读取 html
+             //alert(editor.txt.html());
+            $("#bContent").val(editor.txt.html());
+            $("#blogForm").submit();
+        }, false)
+    })
+   
+    </script>
+</body>
+</html>

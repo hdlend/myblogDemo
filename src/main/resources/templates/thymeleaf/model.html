@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title th:text="${blog.bTitle}">index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link th:href="@{/static/css/model.css}" rel="stylesheet"/> 
+</head>
+<style type="text/css">
+
+</style>
+<body>
+	<div class="div_header">
+		<div class="div_mav">
+			<div class="div_logo"><a th:href="@{/index}">hdlend | 个人博客</a></div>
+			<div class="div_menu">
+				<ul>
+					<li><a th:href="@{/index}">首页</a></li>
+					<li>关于我</li>
+					<li>留言</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="blank"></div>
+	<div class="div_main">
+		<div class="div_info">
+			<div class="div_serach">
+				<form>
+					<input type="text" id="keyboard" name="keyboard" value=""/>
+					<input type="submit" class="input_submit" value="搜索" /> 
+				</form>
+			</div>
+			<div class="article">
+				<div class="article_title" th:text="${blog.bTitle}"></div>
+				<div class="article_date" th:text="${#dates.format(blog.bAddDate,'yyyy-MM-dd')}"></div>
+				<div class="article_abstract" th:text="${blog.bAbstract}">${blog.bAbstract}</div>
+				<div class="article_detail" th:utext="${blog.bContent}">
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</body>
+</html>

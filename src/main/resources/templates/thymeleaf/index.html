@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>hdlend | 个人博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{static/css/index.css}" rel="stylesheet"/> 
+   <script type="text/javascript" th:src="@{/static/js/jquery-1.12.3.min.js}"></script>
+</head>
+<style type="text/css">
+	
+
+</style>
+<body>
+	<div class="div_header">
+		<div class="div_mav">
+			<div class="div_logo"><a th:href="@{index}">hdlend | 个人博客</a></div>
+			<div class="div_menu">
+				<ul>
+					<li><a th:href="@{/index}">首页</a></li>
+					<li>关于我</li>
+					<li>留言</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="blank"></div>
+	<div class="div_main">
+		<div class="div_info">
+			<div class="div_serach">
+				<form id="form_search" th:action="@{/index}">
+					<input type="text" id="keyboard" name="keyboard" th:value="${keyboard}"/>
+					<input type="hidden" name="page" id="page"/>
+					<input type="submit" class="input_submit" value="搜索" /> 
+				</form>
+			</div>
+			<div class="bloglist">
+      <ul  th:each="blog : ${list}">
+		<li> 
+          <dl>
+            <dt><a th:href="@{'/blog/'+${blog.bId}+'.html'}" target="_blank" th:text="${blog.bTitle}">某一人似曾相识、某一刻似曾经历</a></dt>
+            <dd><span class="bloginfo" th:text="${blog.bAbstract}">有时候会有这样的错觉：“某一人似曾相识、某一刻似曾经历”，这样奇特的感受大概你也有过。心理学称之为“即视现象”，是记忆中太多杂乱信息制造出的一种潜意识矛盾冲突... </span>
+              <p class="timeinfo"><span class="date" th:text="${#dates.format(blog.bAddDate,'yyyy-MM-dd')}">2018-08-05</span></p>
+               </dd>
+          </dl>
+        </li>
+
+          </ul>
+    </div>
+		</div>
+	</div>
+	<div id="div_page" class="div_page" >
+		<ul>
+			
+		</ul>
+	</div>
+<script type="text/javascript" th:inline="javascript">
+	function showPage(currPage,totalPages){
+		var str = "<li class='li_page currPage'>"+currPage+"</li>";
+		for(var i=1;i<=3;i++){
+			if(currPage-i>1){
+				str="<li class='li_page'>"+(currPage-i)+"</li>"+str;
+			}
+			if(currPage+i<totalPages){
+				str=str+"<li class='li_page'>"+(currPage+i)+"</li>";
+			}
+		}
+		if(currPage-4>1){
+			str="<li>...</li>"+str;
+		}
+		if(currPage>1){
+			str="<li class='li_page previous'>上一页</li><li class='li_page'>1</li>"+str;
+		}
+		if(currPage+4<totalPages){
+			str=str+"<li>...</li>";
+		}
+		if(currPage<totalPages){
+			str=str+"<li class='li_page'>"+totalPages+"</li>"+"<li class='li_page next'>下一页</li>"
+		}
+		str="<ul>"+str+"</ul>";
+		if(totalPages>0){
+			document.getElementById("div_page").innerHTML=str;
+		}
+	}
+	window.onload=function(){
+		showPage([[${currPage}]],[[${totalPages}]]);
+	     $(".li_page").click(function(){
+	    	 var currPage = $(".currPage").text();
+	    	 var nextPage=1;
+	    	 if($(this).hasClass("previous")){
+	    		 nextPage = --currPage;
+	    	 }else if($(this).hasClass("next")){
+	    		 nextPage = ++currPage;
+	    	 }else{
+	    		 nextPage=$(this).text();
+	    	 }
+	    	 $("#page").val(nextPage);
+	    	 $("#form_search").submit();
+	     } )
+	}
+</script>
+</body>
+</html>

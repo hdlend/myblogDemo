@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&amp;characterEncoding=UTF-8&amp;useOldAliasMetadataBehavior=true
+    username: hdlend
+    password: hdlend123
+
+    

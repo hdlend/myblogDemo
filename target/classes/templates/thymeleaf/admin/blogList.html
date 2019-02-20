@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>hdlend | 个人博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{static/css/bloglist.css}" rel="stylesheet"/> 
+   <script type="text/javascript" th:src="@{/static/js/jquery-1.12.3.min.js}"></script>
+</head>
+<style type="text/css">
+
+
+</style>
+<body>
+	<div class="div_header">
+		<div class="div_mav">
+			<div class="div_logo"><a th:href="@{index}">hdlend | 个人博客</a></div>
+			<div class="div_menu">
+				<ul>
+					<li><a th:href="@{/index}">首页</a></li>
+					<li>关于我</li>
+					<li>留言</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="blank"></div>
+	<div class="div_main">
+		<div class="div_info">
+			<div class="div_serach">
+				<a href="/addBlogView" target="_blank" style="float:left;">添加</a>
+				<form id="form_search" th:action="@{/listBlog}">
+					<input type="text" id="keyboard" name="keyboard" th:value="${keyboard}"/>
+					<input type="hidden" name="page" id="page"/>
+					<input type="submit" class="input_submit" value="搜索" /> 
+				</form>
+			</div>
+			<div class="bloglist">
+			<table >
+			  <thead>
+			  <tr>
+				<th width="20%">标题</th>
+				<th width="10%">日期</th>
+				<th width="60%">简介</th>
+				<th width="10%">操作</th>
+				</tr>
+			  </thead>
+			  <tbody th:each="blog : ${list}">
+			  	<tr>
+			  		<td th:text="${blog.bTitle}"></td>
+			  		<td th:text="${#dates.format(blog.bAddDate,'yyyy-MM-dd')}"></td>
+			  		<td th:text="${blog.bAbstract}"></td>
+			  		<td >
+			  			<ul>
+			  				<li><a th:href="@{'/editBlog?id='+${blog.bId}}" target="_blank" >修改</a></li>
+			  				<li><a href="#" th:onclick="'deleteBlog('+${blog.bId}+')'" >删除</a></li> 
+			  			</ul>
+			  		</td>
+			  	</tr>
+			  </tbody>
+			</table>
+    </div>
+		</div>
+	</div>
+	<div id="div_page" class="div_page" >
+		<ul>
+			
+		</ul>
+	</div>
+<script type="text/javascript" th:inline="javascript">
+	function showPage(currPage,totalPages){
+		var str = "<li class='li_page currPage'>"+currPage+"</li>";
+		for(var i=1;i<=3;i++){
+			if(currPage-i>1){
+				str="<li class='li_page'>"+(currPage-i)+"</li>"+str;
+			}
+			if(currPage+i<totalPages){
+				str=str+"<li class='li_page'>"+(currPage+i)+"</li>";
+			}
+		}
+		if(currPage-4>1){
+			str="<li>...</li>"+str;
+		}
+		if(currPage>1){
+			str="<li class='li_page previous'>上一页</li><li class='li_page'>1</li>"+str;
+		}
+		if(currPage+4<totalPages){
+			str=str+"<li>...</li>";
+		}
+		if(currPage<totalPages){
+			str=str+"<li class='li_page'>"+totalPages+"</li>"+"<li class='li_page next'>下一页</li>"
+		}
+		str="<ul>"+str+"</ul>";
+		if(totalPages>0){
+			document.getElementById("div_page").innerHTML=str;
+		}
+	}
+	  function deleteBlog(bId){
+	    	 if(confirm("确定要删除吗？")){
+	    		 $.ajax({
+	    			 url:"/deleteBlog",
+	    			 data:{"id":bId},
+	    			 type:"POST",
+	    			 dataType:"json",
+	    			 success: function(data){
+	    				 if(data.status=='1'){
+	    					 alert("删除成功！");
+	    					 location.reload();
+	    				 }else{
+	    					 alert("删除失败："+data.msg);
+	    				 }
+	    			 }
+	    		 })
+	    	 }
+	     } 
+	window.onload=function(){
+		showPage([[${currPage}]],[[${totalPages}]]);
+	     $(".li_page").click(function(){
+	    	 var currPage = $(".currPage").text();
+	    	 var nextPage=1;
+	    	 if($(this).hasClass("previous")){
+	    		 nextPage = --currPage;
+	    	 }else if($(this).hasClass("next")){
+	    		 nextPage = ++currPage;
+	    	 }else{
+	    		 nextPage=$(this).text();
+	    	 }
+	    	 $("#page").val(nextPage);
+	    	 $("#form_search").submit();
+	     } );
+	}
+	
+</script>
+</body>
+</html>
