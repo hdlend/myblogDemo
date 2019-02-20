@@ -33,7 +33,7 @@ public class FileUpload {
 			  return map;
 	        }*/
 	        String fileName = file.getOriginalFilename();
-	        
+	        //System.getProperty("user.dir") 项目路径
 	        String path = System.getProperty("user.dir") + "/uploadFile" ;
 	        File dest = new File(path + "/" + fileName);
 	        if(!dest.getParentFile().exists()){ //判断文件父目录是否存在
